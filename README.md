@@ -136,3 +136,86 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: root1234!!
+```
+
+## Application Architecture
+
+### Service Layer
+
+- **Role:** Contains business logic and acts as an intermediary between the controller and repository layers.
+- **Components:** `@Service` classes with methods implementing business logic.
+
+```java
+@Service
+public class PostService {
+    @Autowired
+    private PostRepository postRepository;
+
+    public List<Post> getAllPosts() {
+        return postRepository.findAll();
+    }
+}
+```
+
+### Repository (Database) Layer
+
+- **Role:** Interacts with the database to perform CRUD operations.
+- **Components:** Repository interfaces extending `JpaRepository` or `CrudRepository`.
+
+```java
+@Repository
+public interface PostRepository extends JpaRepository<Post, Long> {
+}
+```
+
+## Usage
+
+### Endpoints
+
+Here are the main endpoints provided by the application:
+
+- **Create a Post:** `POST /api/post`
+- **View a Post:** `POST /api/post/view`
+- **List All Posts:** `GET /api/post/all`
+- **Delete a Post:** `POST /api/post/delete`
+
+### Example API Requests
+
+#### Create a Post:
+
+```bash
+curl -X POST http://localhost:8080/api/post -H "Content-Type: application/json" -d '{"postId": 1, "userName": "john_doe", "password": "1234", "email": "john@example.com", "title": "New Post", "content": "Post content"}'
+```
+### List All Posts:
+```bash
+curl http://localhost:8080/api/post/all
+```
+Delete a Post:
+```bash
+curl -X POST http://localhost:8080/api/post/delete -H "Content-Type: application/json" -d '{"id": 1}'
+```
+
+##Project Structure
+
+### CRUD Interface and Abstract Classes
+CRUDInterface.java
+Defines the abstract methods essential for modern web applications: CREATE, READ, UPDATE, DELETE, and a list method that returns paginated contents wrapped in Api.
+
+`CRUDAbstractService.java`
+A base service class implementing CRUDInterface.java, containing business logic required for most child classes.
+
+`CRUDAbstractApiController.java`
+A base controller class also implementing CRUDInterface.java to handle HTTP requests. It uses @Autowired to inject CRUDAbstractService.
+
+`ConverterInterface.java`
+Handles conversion between Entity types (used in the database) and DTO types (used for data transfer across application layers).
+
+## Example: Comment and Post Controllers
+CommentApiController.java
+Extends the base classes for code efficiency and reduced duplication.
+
+### PostApiController.java
+A more customized approach, separating the structure of incoming requests from the internal data representation. This is beneficial when different types of requests need distinct handling.
+
+### Efficiency and Maintainability
+Using abstract classes for common CRUD operations significantly reduces code duplication and enhances maintainability. The separation of concerns ensures a clean architecture, making the application easier to understand and extend.
