@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/board")
 @RequiredArgsConstructor
-public class BoardApiController extends CRUDAbstractApiController<BoardDto, BoardEntity> {
+public class BoardApiController {
     private final BoardService boardService;
 
     @PostMapping("")

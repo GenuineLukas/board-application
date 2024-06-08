@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class PostService extends CRUDAbstractService<PostDto, PostEntity> {
+public class PostService {
     private final PostRepository postRepository;
     private final BoardRepository boardRepository;
     private final PostConverter postConverter;

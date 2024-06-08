@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class BoardService extends CRUDAbstractService<BoardDto, BoardEntity> {
+public class BoardService {
     private final BoardRepository boardRepository;
     private final BoardConverter boardConverter;
 

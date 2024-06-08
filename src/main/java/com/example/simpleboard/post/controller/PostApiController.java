@@ -19,7 +19,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/post")
 @RequiredArgsConstructor
-public class PostApiController extends CRUDAbstractApiController<PostDto, PostEntity> {
+public class PostApiController {
     private final PostService postService;
 
     @PostMapping("")
@@ -39,7 +39,6 @@ public class PostApiController extends CRUDAbstractApiController<PostDto, PostEn
         return postService.view(postViewRequest);
     }
 
-    @Override
     @GetMapping("/all")
     public Api<List<PostDto>> list(
             @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC)
