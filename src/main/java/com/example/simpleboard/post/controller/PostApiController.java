@@ -1,6 +1,7 @@
 package com.example.simpleboard.post.controller;
 
 import com.example.simpleboard.common.Api;
+import com.example.simpleboard.crud.CRUDAbstractApiController;
 import com.example.simpleboard.post.db.PostEntity;
 import com.example.simpleboard.post.model.PostDto;
 import com.example.simpleboard.post.model.PostRequest;
@@ -18,7 +19,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/post")
 @RequiredArgsConstructor
-public class PostApiController {
+public class PostApiController extends CRUDAbstractApiController<PostDto, PostEntity> {
     private final PostService postService;
 
     @PostMapping("")
@@ -38,6 +39,7 @@ public class PostApiController {
         return postService.view(postViewRequest);
     }
 
+    @Override
     @GetMapping("/all")
     public Api<List<PostDto>> list(
             @PageableDefault(page = 0, size = 10, sort = "id", direction = Sort.Direction.DESC)

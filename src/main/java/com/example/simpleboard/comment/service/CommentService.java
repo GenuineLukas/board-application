@@ -14,28 +14,4 @@ import java.time.LocalDateTime;
 @Service
 @RequiredArgsConstructor
 public class CommentService extends CRUDAbstractService<CommentDto, CommentEntity> {
-
-//    private final CommentRepository commentRepository;
-//    private final PostRepository postRepository;
-//    private final CommentConverter commentConverter;
-//
-//    public CommentDto create(
-//            CommentRequest commentRequest
-//    ){
-//        var postEntity = postRepository.findById(commentRequest.getPostId()).get();
-//
-//        var entity = CommentEntity.builder()
-//                .post(postEntity)
-//                .email(commentRequest.getEmail())
-//                .userName(commentRequest.getUserName())
-//                .password(commentRequest.getPassword())
-//                .status("REGISTERED")
-//                .title(commentRequest.getTitle())
-//                .content(commentRequest.getContent())
-//                .commentedAt(LocalDateTime.now())
-//                .build()
-//                ;
-//        var saveComment =  commentRepository.save(entity);
-//        return commentConverter.toDto(saveComment);
-//    }
 }

@@ -4,6 +4,7 @@ import com.example.simpleboard.board.db.BoardRepository;
 import com.example.simpleboard.comment.db.CommentRepository;
 import com.example.simpleboard.common.Api;
 import com.example.simpleboard.common.Pagination;
+import com.example.simpleboard.crud.CRUDAbstractService;
 import com.example.simpleboard.post.db.PostEntity;
 import com.example.simpleboard.post.db.PostRepository;
 import com.example.simpleboard.post.model.PostDto;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class PostService {
+public class PostService extends CRUDAbstractService<PostDto, PostEntity> {
     private final PostRepository postRepository;
     private final BoardRepository boardRepository;
     private final PostConverter postConverter;

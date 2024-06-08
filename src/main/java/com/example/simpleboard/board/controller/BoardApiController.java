@@ -4,6 +4,7 @@ import com.example.simpleboard.board.db.BoardEntity;
 import com.example.simpleboard.board.model.BoardDto;
 import com.example.simpleboard.board.model.BoardRequest;
 import com.example.simpleboard.board.service.BoardService;
+import com.example.simpleboard.crud.CRUDAbstractApiController;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/board")
 @RequiredArgsConstructor
-public class BoardApiController {
+public class BoardApiController extends CRUDAbstractApiController<BoardDto, BoardEntity> {
     private final BoardService boardService;
 
     @PostMapping("")

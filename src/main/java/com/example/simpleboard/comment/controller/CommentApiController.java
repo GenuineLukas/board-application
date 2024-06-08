@@ -13,15 +13,4 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/comment")
 @RequiredArgsConstructor
 public class CommentApiController extends CRUDAbstractApiController<CommentDto, CommentEntity> {
-
-
-//    private final CommentService commentService;
-//
-//    @PostMapping("")
-//    public CommentDto create(
-//        @Valid
-//        @RequestBody CommentRequest commentRequest
-//        ){
-//        return commentService.create(commentRequest);
-//    }
 }
