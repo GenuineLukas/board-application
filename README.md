@@ -195,7 +195,7 @@ Delete a Post:
 curl -X POST http://localhost:8080/api/post/delete -H "Content-Type: application/json" -d '{"id": 1}'
 ```
 
-##Project Structure
+## Project Structure
 
 ### CRUD Interface and Abstract Classes
 CRUDInterface.java
